@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="'en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible content= IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="./graphic/Home/avatar.webp" type="image/x-icon">
+    <title>Happy Birthday </title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css rel="stylesheet">
+
+    <style>
+        /* flipping images */
+.flip-box {
+  background-color: transparent;
+  width: 100%;
+  height: 300px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px;
+}
+
+/* This container is needed to position the front and back side */
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-box-front,
+.flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-box-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+.flip-box-back {
+  background-color: rgb(240, 11, 156);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+/* cake */
+body {
+  color:rgb(240, 156, 209);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  position: relative;
+  width: 240px;
+  height: 480px;
+}
+
+.cake {
+  position: absolute;
+  bottom: 0;
+}
+
+.lyr {
+  width: 240px;
+  height: 96px;
+  position: absolute;
+  background-color: currentColor;
+  border-radius: 120px / 24px ;
+}
+
+.lyr-1 {
+  color: bisque;
+  bottom: 0;
+}
+
+.lyr-2 {
+  color: rgb(167, 98, 14);
+  bottom: 48px;
+}
+
+.lyr-3 {
+  color: rgb(68, 41, 7);
+  bottom: 96px;
+  background-image: radial-gradient(ellipse 7.5rem 1.5rem at 7.5rem 1.5rem, gold, gold 5%, #E99788 100%, transparent);
+}
+
+.candle {
+  position: absolute;
+  background-color: red;
+  width:32px;
+  left: 104px;
+  height: 160px;
+  bottom: 160px;
+  border-radius: 20px / 10px;
+  background-image: repeating-linear-gradient(45deg, white, white 10%, transparent 10%, transparent 20%);
+}
+
+.candle::before {
+  content: '';
+  position: absolute;
+  background-color: black;
+  width: 4px;
+  height: 32px;
+  border-radius: 4px / 2.4px;
+  left: 15px;
+  top: -22px;
+}
+
+.candle::after {
+   background-color: red;
+   display: block;
+   content: '';
+   width: 32px;
+   height: 16px;
+   border-radius: 50%;
+}
+
+.fram {
+  position: absolute;
+  left: 104px;
+}
+
+
+.smoke {
+  color: currentColor;
+  background-color: currentColor;
+  top: 125px;
+  width: 6px;
+  height: 6px;
+  position: relative;
+  animation-name: burn-smoke;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+}
+
+.smk-1 {
+  left: 8px;
+  animation-duration: .5s;
+}
+
+.smk-2 {
+  left: -8px;
+  animation-duration: .6s;
+}
+
+.smk-3 {
+  left: 16px;
+   animation-duration: .7s;
+}
+
+.smk-4 {
+  left: 24px;
+  animation-duration: .8s;
+}
+.smk-5 {
+  left: 32px;
+  animation-duration: .9s;
+}
+
+
+.flm-part {
+  background-color: currentColor;
+  border-color: currentColor;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  position: relative;
+  transform: rotate(60deg) skewX(0deg) scale(1);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.flm-part.fliped {
+  transform: rotate(120deg) skewX(0deg) scale(1);
+}
+
+.flm-part::before {
+  content: '';
+  position: absolute;
+  border-radius: 0 0 0 100%;
+  border-bottom-style: solid;
+  border-bottom-color:inherit;
+  border-bottom-width: 32px;
+  width: 32px;
+  height: 8px;
+  left: -16px;
+  top: -8px;
+}
+
+.flm-part.fliped::before  {
+  border-radius: 100% 0 0 0;
+  border-bottom: 0 solid transparent;
+  border-top-style: solid;
+  border-top-color: inherit;
+   border-top-width:32px;
+   width: 32px;
+  height: 8px;
+  left: -16px;
+  top: 0px;
+}
+
+.red {
+  color: red;
+  top: 84.4px;
+  opacity: 0.7;
+  animation-name: burn-red;
+  animation-duration: 1s;
+}
+
+.orange {
+  color: orange;
+  top: 57px;
+  opacity: 0.8;
+  box-shadow: 0 0 16px orange;
+   animation-name: burn-orange;
+  animation-duration: 0.4s;
+}
+
+.yellow {
+  color: yellow;
+  top: 28px;
+  opacity: 0.9;
+  box-shadow: 0 0 16px yellow;
+   animation-name: burn-yellow;
+  animation-duration: 1.6s;
+}
+
+.white {
+  color: white;
+  box-shadow: 0 0 16px white;
+   animation-name: burn-white;
+  animation-duration: 1.8s;
+}
+
+
+@keyframes burn-smoke {
+  0% { transform: rotate(0deg) scale(1);  opacity: 1; }
+  100% {transform: rotate(360deg) scale(4); opacity: 0; top: 0;}
+}
+
+@keyframes burn-red {
+  0% { transform: rotate(120deg) skewX(0deg) scale(1.8)}
+  20% { transform: rotate(118deg) skewX(5deg) scale(2)}
+  40% { transform: rotate(120deg) skewX(0deg) scale(1.8)}
+  60% { transform: rotate(122deg) skewX(-5deg) scale(2)}
+  100% { transform: rotate(120deg) skewX(0deg) scale(1.8)}
+}
+
+@keyframes  burn-white {
+  0% { transform: rotate(60deg) skewX(0deg) scale(1)}
+  20% { transform: rotate(50deg) skewX(-3deg) scale(1.1)}
+  40% { transform: rotate(60deg) skewX(0deg) scale(1)}
+  60% { transform: rotate(70deg) skewX(3deg) scale(1.1)}
+  100% {transform: rotate(60deg) skew(0deg) scale(1)}
+}
+
+@keyframes burn-yellow {
+  0% { transform: rotate(120deg) skewX(0deg) scale(1.4)}
+  20% { transform: rotate(110deg) skewX(10deg) scale(1.5)}
+  40% { transform: rotate(120deg) skewX(0deg) scale(1.4)}
+  60% { transform: rotate(130deg) skewX(-10deg) scale(1.5)}
+  100% {transform: rotate(120deg) skew(0deg) scale(1.4)}
+}
+
+@keyframes burn-orange {
+  0% { transform: rotate(65deg) skewX(0deg) scale(1.6)}
+  20% { transform: rotate(60deg) skewX(-15deg) scale(1.7)}
+  40% { transform: rotate(65deg) skewX(0deg) scale(1.6)}
+  60% { transform: rotate(70deg) skewX(2deg) scale(1.7)}
+  100% {transform: rotate(65deg) skew(0deg) scale(1.6)}
+}
+    </style>
+</head>
+
+<body   style="background-color:rgb(240, 156, 209); width:100%; height:100%;">
+    <h2 class="pt-3" style="text-align: center; 
+     width:auto;
+     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+     color: rgb(248, 14, 178); 
+     font-size:xxx-large;
+     margin-right: 45px;
+     text-shadow: 2px 2px #ff0000;"
+>HAPPY BIRTHDAY COACH EUNIECE!!!</h2>
+    <div class="continer"
+  >
+
+  <div class="wrapper">
+    <div class="cake">
+         <div class="lyr lyr-1"></div>
+         <div class="lyr lyr-2"></div>
+         <div class="lyr lyr-3"></div>
+    </div>
+    <div class="candle"></div>
+    <div class="fram">
+
+        <div class="smoke smk-1"></div>
+        <div class="smoke smk-2"></div>
+        <div class="smoke smk-3"></div>
+        <div class="smoke smk-4"></div>
+        <div class="smoke smk-5"></div>
+
+        <div class="flm-part red fliped"></div>
+        <div class="flm-part orange"></div>
+        <div class="flm-part yellow fliped"></div>
+        <div class="flm-part white"></div>
+
+    </div>
+  
+</div>
+</div>
+
+     <div class="row container-fluid">
+                        <div class="col-lg-4">
+                            <div class="flip-box">
+                                <div class="flip-box-inner">
+                                    <div class="flip-box-front">
+                                        <img src="flipcard.jpgf.jfif" alt="Trustworthy"
+                                            style="width:100% ;height: 100%;">
+                                    </div>
+                                    <div class="flip-box-back">
+                                        <p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                                        margin-top: 60px;">Thanks for being our coach who always pushes us to be our best, inspires us to chase our dreams, and teaches us to never give up</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="flip-box">
+                                <div class="flip-box-inner">
+                                    <div class="flip-box-front">
+                                        <img src="flipcard.jpgf.jfif" alt="Resilience"
+                                            style="width:100% ;height:100%">
+                                    </div>
+                                    <div class="flip-box-back">
+                                        <p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                                    margin-top: 60px;">
+                                        <img src="cute.jpg" style="width:50px ; height:50px"><br>
+                                        You are not just a coach to us, but also a mentor and a friend.</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="flip-box">
+                                <div class="flip-box-inner">
+                                    <div class="flip-box-front">
+                                        <img src="flipcard.jpgf.jfif" alt="Resilience"
+                                            style="width:100% ;height:100%">
+                                    </div>
+                                    <div class="flip-box-back">
+                                        <p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                                        margin-top: 60px;">  <img src="heart.jpg" style="width:50px ; height:50px"><br>
+                                        May your special day be filled with joy, laughter, and all the things that make you happy<br>
+                                      </p>
+                                      
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+</div>
+
+                  
+</body>
